@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1404363314769706006}
   - component: {fileID: -3979212533517297585}
   - component: {fileID: 6064244135863597186}
+  - component: {fileID: 8672725842807361917}
   m_Layer: 0
   m_Name: FollowerClock
   m_TagString: Clock
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.73562217, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 66bbe1ce47ee24a84a24c12d38c4554c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -160,5 +161,23 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &8672725842807361917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421125869335470054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65091fc31e110341a26905882030d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite1: {fileID: 21300000, guid: 66bbe1ce47ee24a84a24c12d38c4554c, type: 3}
+  sprite2: {fileID: 21300000, guid: 9d59d492b19dc49d7b4b3b45b9f70408, type: 3}
+  sprite3: {fileID: 21300000, guid: 9f3d016fc539c4cb3b6b339ca36ef388, type: 3}
+  sprite4: {fileID: 21300000, guid: 28e0c87a012ad4a08b8ba6aee3e7cf4e, type: 3}
+  frame: 1
+  timeUntilNextFrame: 0.25
