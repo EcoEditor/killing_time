@@ -35,10 +35,8 @@ namespace Gameplay.Clocks
                 _target.transform.position.y - transform.position.y);
             direction.Normalize();
 
-            transform.Rotate(direction, Space.Self);  
-            
             var bulletObj = Instantiate(bullet, transform.position, transform.rotation);
-            bulletObj.GetComponent<Rigidbody2D>().AddForce(direction * transform.up);
+            bulletObj.GetComponent<Rigidbody2D>().velocity = direction * launchedVelocity;
         }
     }
 }

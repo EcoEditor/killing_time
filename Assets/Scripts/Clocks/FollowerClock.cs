@@ -20,12 +20,8 @@ namespace Gameplay.Clocks
 
         private void Update()
         {
-                FollowPlayer();
-            // var elapsedTime = Time.time - _startTime;
-            // if (elapsedTime >= model.Speed)
-            // {
-            //     _startTime = Time.time;
-            // }
+            FollowPlayer();
+            
         }
 
         private void FollowPlayer()
@@ -39,6 +35,11 @@ namespace Gameplay.Clocks
             float impulseForce = model.Speed;
             _rb2d.AddForce(direction * impulseForce, 
                 ForceMode2D.Impulse);
+        }
+
+        public void Shot()
+        {
+            
         }
     }
 }
