@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Gameplay
@@ -6,6 +6,10 @@ namespace Gameplay
     public class Player : MonoBehaviour
     {
         private const int INITIAL_HEALTH = 100;
+        
+        [SerializeField] private AnimationCurve bounceBackCurve;
+        [SerializeField] private float bounceDuration = 1f;
+        
         private int _currentHealth;
 
         private void Awake()
@@ -23,9 +27,21 @@ namespace Gameplay
             _currentHealth -= amount;
         }
 
-        private void Update()
+        // What happens to the player when it been hit by the Follower clock
+        public void BounceBack(Vector2 direction)
         {
+            StartCoroutine(BounceRoutine(direction));
+        }
 
+        private IEnumerator BounceRoutine(Vector2 direction)
+        {
+            var startTime = Time.time;
+            var elapsedTime = 0f;
+
+            while (elapsedTime < bounceDuration)
+            {
+                //elapsedTime = 
+            }
         }
     }
 }
