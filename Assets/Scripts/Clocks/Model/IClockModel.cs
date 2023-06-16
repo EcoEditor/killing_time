@@ -5,8 +5,8 @@ namespace Gameplay.Clocks
     public interface IClockModel
     {
         void Init();
-        int Damage { get; }
-        int Health { get; }
+        int GiveDamage { get; }
+        int TakeDamage { get; }
         float Speed { get; }
         ClockType Type { get; }
     }

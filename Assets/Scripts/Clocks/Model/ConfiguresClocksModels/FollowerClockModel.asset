@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FollowerClockModel
   m_EditorClassIdentifier: 
   clockType: 1
-  damage: 2
-  health: 10
+  takeDamage: 17
+  giveDamage: 12
   speed: 0.5
