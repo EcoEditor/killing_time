@@ -6,7 +6,7 @@ namespace Gameplay.Clocks
     {
         [SerializeField] private ClockModel model;
         [SerializeField] private float shootingInterval = 0.4f;
-        [SerializeField] private GameObject bullet;
+        [SerializeField] private Bullet bulletRef;
         [SerializeField] private float launchedVelocity;
 
         private Player _target;
@@ -35,8 +35,8 @@ namespace Gameplay.Clocks
                 _target.transform.position.y - transform.position.y);
             direction.Normalize();
 
-            var bulletObj = Instantiate(bullet, transform.position, transform.rotation);
-            bulletObj.GetComponent<Rigidbody2D>().velocity = direction * launchedVelocity;
+            var bulletObj = Instantiate(bulletRef, transform.position, transform.rotation);
+            bulletObj.StartMoving(direction);
         }
     }
 }

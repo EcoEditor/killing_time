@@ -51,7 +51,7 @@ namespace Gameplay.Clocks
                 direction.Normalize();
 
                 Debug.Log("direction from the follower clock" + direction);
-                _target.BounceBack(direction);
+                _target.BounceBack(direction, model.GiveDamage);
             }
         }
 
