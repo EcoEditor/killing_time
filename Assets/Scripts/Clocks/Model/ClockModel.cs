@@ -6,10 +6,10 @@ namespace Gameplay.Clocks
     public class ClockModel : ScriptableObject, IClockModel
     {
         [SerializeField] private ClockType clockType;
-        [Range(0,4)]
-        [SerializeField] private int damage;
         [Range(1,20)]
-        [SerializeField] private int health;
+        [SerializeField] private int takeDamage;
+        [Range(0,20)]
+        [SerializeField] private int giveDamage;
         [SerializeField] private float speed;
         
         public void Init()
@@ -17,8 +17,8 @@ namespace Gameplay.Clocks
             
         }
 
-        public int Damage => damage;
-        public int Health => health;
+        public int GiveDamage => giveDamage;
+        public int TakeDamage => takeDamage;
         public float Speed => speed;
         public ClockType Type => clockType;
     }

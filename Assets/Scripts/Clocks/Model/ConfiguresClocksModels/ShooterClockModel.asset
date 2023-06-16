@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ShooterClockModel
   m_EditorClassIdentifier: 
   clockType: 1
-  damage: 4
-  health: 10
+  takeDamage: 0
+  giveDamage: 12
   speed: 0
