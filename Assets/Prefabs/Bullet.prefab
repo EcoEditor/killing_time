@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6305082183168555677}
   - component: {fileID: 8025297211543173404}
   - component: {fileID: 3658320348515657282}
+  - component: {fileID: 6139514914965014932}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &8025297211543173404
 Rigidbody2D:
@@ -112,3 +113,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6139514914965014932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569879074892066618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97b2e3fba014ee8b4234095736757c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  launchVelocity: 20

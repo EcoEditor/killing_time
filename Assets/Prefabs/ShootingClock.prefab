@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7200734009000333995}
   - component: {fileID: 6441047699602487272}
   - component: {fileID: 7747839730338277668}
+  - component: {fileID: 6455570195748614882}
   m_Layer: 0
   m_Name: ShootingClock
   m_TagString: Clock
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2512101092135870397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.062202, y: 1.9710128, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.6443302, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 54a434023067c495ca2609320609b155, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,5 +136,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 11400000, guid: a51173de69077475b93035890fe3b6fc, type: 2}
   shootingInterval: 0.4
-  bullet: {fileID: 3569879074892066618, guid: b82ed52f0566e4b7dac38f42f83f5566, type: 3}
+  bulletRef: {fileID: 6139514914965014932, guid: b82ed52f0566e4b7dac38f42f83f5566, type: 3}
   launchedVelocity: 20
+--- !u!114 &6455570195748614882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512101092135870397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65091fc31e110341a26905882030d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite1: {fileID: 21300000, guid: 54a434023067c495ca2609320609b155, type: 3}
+  sprite2: {fileID: 21300000, guid: dc0a86e88cb694c1ba169793e0024d4b, type: 3}
+  sprite3: {fileID: 21300000, guid: 7bb11b6b7b4f4484b97d818e5dca4879, type: 3}
+  sprite4: {fileID: 21300000, guid: 5333f4886df304b719e7faac8de03979, type: 3}
+  frame: 1
+  timeUntilNextFrame: 0.25
