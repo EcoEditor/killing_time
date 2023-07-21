@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1226167251783766008
+--- !u!1 &1886991230681731117
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2040737434002670828}
-  - component: {fileID: 3305207777161270761}
-  - component: {fileID: 3042000155121483786}
-  - component: {fileID: 3899045663807488341}
+  - component: {fileID: 5853608039836460035}
+  - component: {fileID: 3590420556152189068}
   m_Layer: 0
-  m_Name: MysteryClock
-  m_TagString: Clock
+  m_Name: Circle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2040737434002670828
+--- !u!4 &5853608039836460035
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226167251783766008}
+  m_GameObject: {fileID: 1886991230681731117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.062202, y: 1.9710128, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 6910016687403582491}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3305207777161270761
+--- !u!212 &3590420556152189068
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226167251783766008}
+  m_GameObject: {fileID: 1886991230681731117}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.07456994, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f81aa1f8c56fc437d800497eecf57d11, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,13 +84,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &3042000155121483786
+--- !u!1 &3432727326086297445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6910016687403582491}
+  - component: {fileID: 6579501549042187271}
+  - component: {fileID: 3442523726877807563}
+  m_Layer: 0
+  m_Name: Invincibility1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6910016687403582491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3432727326086297445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5853608039836460035}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6579501549042187271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3432727326086297445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2e49c2d778c42dc8c67cb99a29eaa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 0
+  icon: {fileID: 21300000, guid: f81aa1f8c56fc437d800497eecf57d11, type: 3}
+  duration: 5
+--- !u!58 &3442523726877807563
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226167251783766008}
+  m_GameObject: {fileID: 3432727326086297445}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -121,24 +168,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &3899045663807488341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226167251783766008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9f6379cf2a64a4585989e5e20e943a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 11400000, guid: 4fe6d9659576144229942d0a0679b6f4, type: 2}
-  powerUps:
-  - {fileID: 7175136803696716777, guid: 890256785cdc54f478fbe30d009cd756, type: 3}
-  - {fileID: 6579501549042187271, guid: de5d2dcae933346298d72588df8465ab, type: 3}
-  - {fileID: 3404637540547450692, guid: 792dde11760624672a7126ca874308e7, type: 3}
-  - {fileID: 2040991657071672446, guid: 4123c442c77184cddaafdb0690c991c0, type: 3}
-  - {fileID: 330081236508645421, guid: 0613fdce376884dd9b579bd906003b38, type: 3}
-  - {fileID: 6441981985594239035, guid: 20e718fd6b3ef491ea6e6d8ce4e1d27a, type: 3}
-  shootingInterval: 0.4
