@@ -16,6 +16,7 @@ namespace Gameplay.Clocks
         {
             _target = FindObjectOfType<Player>();
             _startTime = Time.time;
+            EventManager.AddListener(HandleGameLostEvent);
         }
 
         private void Update()
@@ -37,6 +38,11 @@ namespace Gameplay.Clocks
 
             var bulletObj = Instantiate(bulletRef, transform.position, transform.rotation);
             bulletObj.StartMoving(direction);
+        }
+
+        private void HandleGameLostEvent(GameObject go)
+        {
+            // stop shooting player
         }
     }
 }

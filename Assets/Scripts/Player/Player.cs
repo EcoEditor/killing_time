@@ -1,39 +1,81 @@
+using System;
 using System.Collections;
+using Events;
 using UnityEngine;
 
 namespace Gameplay
 {
     public class Player : MonoBehaviour
     {
-        private const int INITIAL_HEALTH = 100;
+        #region Events
+
+        public Action<float> ChangePlayerHealth;
+        private GameLostEvent _gameLostEvent = new GameLostEvent();
+
+        #endregion
+        
+        #region consts
+        
+        private const float INITIAL_HEALTH = 100;
+        // Must be the same amount as health bar sprites
+        private const int HEALTH_PORTIONS = 21;
+        
+        #endregion
         
         [SerializeField] private AnimationCurve bounceBackCurve;
         [SerializeField] private float bounceDuration = 1f;
         
-        private int _currentHealth;
+        private float _currentHealth;
+        private float _healthPortion;
 
         private void Awake()
         {
             _currentHealth = INITIAL_HEALTH;
+            _healthPortion = _currentHealth / HEALTH_PORTIONS;
         }
 
-        public void IncreaseHealth(int amount)
+        private void Update()
         {
-            _currentHealth += amount;
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                IncreaseHealth();
+            }
         }
 
-        public void DecreaseHealth(int amount)
+        [ContextMenu("Increase health")]
+        public void IncreaseHealth()
         {
-            _currentHealth -= amount;
+            var currentHealth = _currentHealth + _healthPortion;
+            if (currentHealth > INITIAL_HEALTH) return;
+            UpdateCurrentHealth(currentHealth);
+        }
+
+        public void DecreaseHealth()
+        {
+            var currentHealth = _currentHealth - _healthPortion;
+            if (currentHealth <= 0f)
+            {
+                _gameLostEvent?.Invoke();
+                return;
+            }
+
+            UpdateCurrentHealth(currentHealth);
+        }
+
+        private void UpdateCurrentHealth(float currentHealth)
+        {
+            _currentHealth = currentHealth;
+            ChangePlayerHealth?.Invoke(_currentHealth);
+            Debug.Log($"currentHealth {_currentHealth}");
         }
 
         // What happens to the player when it been hit by the Follower clock
-        public void BounceBack(Vector2 direction, int damage)
+        public void BounceBack(Vector2 direction)
         {
-            StartCoroutine(BounceRoutine(direction, damage));
+            StartCoroutine(BounceRoutine(direction));
         }
 
-        private IEnumerator BounceRoutine(Vector2 direction, int damage)
+        private IEnumerator BounceRoutine(Vector2 direction)
         {
             var startTime = Time.time;
             var elapsedTime = 0f;
@@ -48,7 +90,14 @@ namespace Gameplay
                 yield return null;
             }
             
-            DecreaseHealth(damage);
+            DecreaseHealth();
         }
+        
+        
+        #region Properties
+
+        public float MaxHealth => INITIAL_HEALTH;
+
+        #endregion
     }
 }

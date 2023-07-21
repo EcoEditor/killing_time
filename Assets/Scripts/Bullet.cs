@@ -1,4 +1,5 @@
 using System;
+using Gameplay;
 using UnityEngine;
 
 /// <summary>
@@ -69,8 +70,9 @@ public class Bullet : MonoBehaviour
             ObjectPool.ReturnObject(other.gameObject);
             //ObjectPool.ReturnBullet(gameObject);
         }
-        else if (other.gameObject.CompareTag("Enemy"))
+        else if (other.gameObject.CompareTag("Player"))
         {
+            other.GetComponent<Player>().DecreaseHealth();
             // if colliding with enemy return both to 
             // their respective pools
             //ObjectPool.ReturnEnemy(other.gameObject);

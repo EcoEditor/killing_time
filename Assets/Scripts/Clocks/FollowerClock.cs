@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Gameplay.Clocks
@@ -51,7 +50,7 @@ namespace Gameplay.Clocks
                 direction.Normalize();
 
                 Debug.Log("direction from the follower clock" + direction);
-                _target.BounceBack(direction, model.GiveDamage);
+                _target.BounceBack(direction);
             }
         }
 
