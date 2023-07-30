@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchVelocity: 20
+  myCollider: {fileID: 3871477004142089660}
+  ownerIgnoreTime: 0.2
 --- !u!58 &3871477004142089660
 CircleCollider2D:
   m_ObjectHideFlags: 0

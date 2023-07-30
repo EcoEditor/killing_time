@@ -1,24 +1,19 @@
+using System;
 using UnityEngine;
 
 namespace Gameplay.Clocks
 {
-    public class FollowingClock : MonoBehaviour
+    public class FollowingClock : ClockBase
     {
-        private const int INITIAL_HEALTH = 100;
-        [SerializeField] private ClockModel model;
-
-        private int _currentHealth;
         private Rigidbody2D _rb2d;
+        private Vector2 _moveDirection;
         private Player _target;
-        private float _startTime;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _rb2d = GetComponent<Rigidbody2D>();
-            _startTime = Time.time;
             _target = FindObjectOfType<Player>();
-
-            _currentHealth = INITIAL_HEALTH;
         }
 
         private void Update()
@@ -29,36 +24,23 @@ namespace Gameplay.Clocks
         private void FollowPlayer()
         {
             // calculate direction to target pickup and start moving toward it
-            Vector2 direction = new Vector2(
+            _moveDirection = new Vector2(
                 _target.transform.position.x - transform.position.x,
                 _target.transform.position.y - transform.position.y);
-            direction.Normalize();
+            _moveDirection.Normalize();
             _rb2d.velocity = Vector2.zero;
             float impulseForce = model.Speed;
-            _rb2d.AddForce(direction * impulseForce, 
+            _rb2d.AddForce(_moveDirection * impulseForce, 
                 ForceMode2D.Impulse);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (other.GetComponent<Player>())
+            if (collision.gameObject.GetComponent<Player>())
             {
-                var direction = new Vector2(
-                    _target.transform.position.x - transform.position.x,
-                    _target.transform.position.y - transform.position.y);
-                
-                direction.Normalize();
-
-                Debug.Log("direction from the follower clock" + direction);
-                _target.BounceBack(direction);
+                Debug.Log("direction from the follower clock" + _moveDirection);
+                _target.BounceBack(_moveDirection);
             }
-        }
-
-        public void TakeDamage()
-        {
-            
         }
     }
 }
-
-

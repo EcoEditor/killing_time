@@ -7,7 +7,7 @@ namespace Gameplay.Clocks
     {
         [SerializeField] private ClockType clockType;
         [Range(1,20)]
-        [SerializeField] private int takeDamage;
+        [SerializeField] private int healthPortions;
         [Range(0,20)]
         [SerializeField] private int giveDamage;
         [SerializeField] private float speed;
@@ -18,7 +18,7 @@ namespace Gameplay.Clocks
         }
 
         public int GiveDamage => giveDamage;
-        public int TakeDamage => takeDamage;
+        public int HealthPortions => healthPortions;
         public float Speed => speed;
         public ClockType Type => clockType;
     }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MysteryClockModel
   m_EditorClassIdentifier: 
   clockType: 0
-  takeDamage: 14
+  healthPortions: 20
   giveDamage: 0
   speed: 0

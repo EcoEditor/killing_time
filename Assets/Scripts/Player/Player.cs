@@ -22,11 +22,18 @@ namespace Gameplay
         
         #endregion
         
+        [SerializeField] private float movementSpeed;
         [SerializeField] private AnimationCurve bounceBackCurve;
         [SerializeField] private float bounceDuration = 1f;
+
+        [Header("Player Audio")] 
+        [SerializeField] private AudioClip playerHitAudio;
+        [SerializeField] private AudioClip playerDeathAudio;
+        [SerializeField] private AudioSource playerAudioSource;
         
         private float _currentHealth;
         private float _healthPortion;
+        private float _speed;
 
         private void Awake()
         {
@@ -55,10 +62,12 @@ namespace Gameplay
             var currentHealth = _currentHealth - _healthPortion;
             if (currentHealth <= 0f)
             {
-                _gameLostEvent?.Invoke();
+                Die();
                 return;
             }
 
+            playerAudioSource.clip = playerHitAudio;
+            playerAudioSource.Play();
             UpdateCurrentHealth(currentHealth);
         }
 
@@ -67,6 +76,16 @@ namespace Gameplay
             _currentHealth = currentHealth;
             ChangePlayerHealth?.Invoke(_currentHealth);
             Debug.Log($"currentHealth {_currentHealth}");
+        }
+        
+        public void ApplySpeedBoost(float multiplier)
+        {
+            _speed = multiplier * movementSpeed;
+        }
+
+        public void ResetSpeed()
+        {
+            _speed = movementSpeed;
         }
 
         // What happens to the player when it been hit by the Follower clock
@@ -79,24 +98,31 @@ namespace Gameplay
         {
             var startTime = Time.time;
             var elapsedTime = 0f;
-            var initialPosition = transform.position;
-            var oppositeDirection = direction * -1;
+            var initialPosition = (Vector2)transform.position;
+            var endPosition = initialPosition + direction;
 
             while (elapsedTime < 1)
             {
                 elapsedTime = (Time.time - startTime) / bounceDuration;
                 var bounceFactor = bounceBackCurve.Evaluate(elapsedTime);
-                transform.position = Vector3.Lerp(initialPosition, oppositeDirection * -1f, bounceFactor);
+                transform.position = Vector3.Lerp(initialPosition, endPosition, bounceFactor);
                 yield return null;
             }
             
             DecreaseHealth();
         }
-        
+
+        private void Die()
+        {
+            _gameLostEvent?.Invoke();
+            playerAudioSource.clip = playerDeathAudio;
+            playerAudioSource.Play();
+        }
         
         #region Properties
 
         public float MaxHealth => INITIAL_HEALTH;
+        public float MovementSpeed => _speed;
 
         #endregion
     }

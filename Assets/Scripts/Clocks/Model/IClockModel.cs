@@ -6,7 +6,7 @@ namespace Gameplay.Clocks
     {
         void Init();
         int GiveDamage { get; }
-        int TakeDamage { get; }
+        int HealthPortions { get; }
         float Speed { get; }
         ClockType Type { get; }
     }

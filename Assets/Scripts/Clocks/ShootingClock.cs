@@ -2,9 +2,8 @@ using UnityEngine;
 
 namespace Gameplay.Clocks
 {
-    public class ShootingClock : MonoBehaviour
+    public class ShootingClock : ClockBase
     {
-        [SerializeField] private ClockModel model;
         [SerializeField] private float shootingInterval = 0.4f;
         [SerializeField] private Bullet bulletRef;
         [SerializeField] private float launchedVelocity;
@@ -12,8 +11,9 @@ namespace Gameplay.Clocks
         private Player _target;
         private float _startTime;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _target = FindObjectOfType<Player>();
             _startTime = Time.time;
             EventManager.AddListener(HandleGameLostEvent);
@@ -37,6 +37,7 @@ namespace Gameplay.Clocks
             direction.Normalize();
 
             var bulletObj = Instantiate(bulletRef, transform.position, transform.rotation);
+            bulletObj.TempIgnoreCollider();
             bulletObj.StartMoving(direction);
         }
 

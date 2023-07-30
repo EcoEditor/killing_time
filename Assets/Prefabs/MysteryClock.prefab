@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3305207777161270761}
   - component: {fileID: 3042000155121483786}
   - component: {fileID: 3899045663807488341}
+  - component: {fileID: 2977445751810457416}
   m_Layer: 0
   m_Name: MysteryClock
   m_TagString: Clock
@@ -27,10 +28,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226167251783766008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.062202, y: 1.9710128, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4631265629093554494}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.07456994, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9b9f5b3230088d6449383a0a1a6d56c3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,7 +122,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
 --- !u!114 &3899045663807488341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,4 +143,132 @@ MonoBehaviour:
   - {fileID: 2040991657071672446, guid: 4123c442c77184cddaafdb0690c991c0, type: 3}
   - {fileID: 330081236508645421, guid: 0613fdce376884dd9b579bd906003b38, type: 3}
   - {fileID: 6441981985594239035, guid: 20e718fd6b3ef491ea6e6d8ce4e1d27a, type: 3}
-  shootingInterval: 0.4
+  shootingInterval: 5
+--- !u!114 &2977445751810457416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226167251783766008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65091fc31e110341a26905882030d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite1: {fileID: 21300000, guid: 9b9f5b3230088d6449383a0a1a6d56c3, type: 3}
+  sprite2: {fileID: 21300000, guid: c01ee33ec21c32a4dbcdf853cc7b0f9e, type: 3}
+  sprite3: {fileID: 21300000, guid: cfc4abd8724ed54498ae798e065bae31, type: 3}
+  sprite4: {fileID: 21300000, guid: a5fd71458d81b4a47a86a39890274914, type: 3}
+  frame: 1
+  timeUntilNextFrame: 0.25
+--- !u!1001 &8021983987384730051
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2040737434002670828}
+    m_Modifications:
+    - target: {fileID: 789942853787931593, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: clock
+      value: 
+      objectReference: {fileID: 3899045663807488341}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152337845687035128, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+      propertyPath: m_Name
+      value: ClockCanvas
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+--- !u!224 &4631265629093554494 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3392970160857458941, guid: 42c567f82b37c4b819949bc02c26cf8a, type: 3}
+  m_PrefabInstance: {fileID: 8021983987384730051}
+  m_PrefabAsset: {fileID: 0}
