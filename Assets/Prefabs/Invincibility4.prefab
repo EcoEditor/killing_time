@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2e49c2d778c42dc8c67cb99a29eaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  value: 0
+  powerUpType: 2
   icon: {fileID: 21300000, guid: 05c75186cd1674a6cba5d0aca9dc2b14, type: 3}
   duration: 20
+  expireTime: 5
   audioSfx: {fileID: -7467453238534530146}
 --- !u!58 &2779797613786064161
 CircleCollider2D:

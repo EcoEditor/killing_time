@@ -15,4 +15,4 @@ MonoBehaviour:
   clockType: 1
   healthPortions: 15
   giveDamage: 12
-  speed: 0.5
+  speed: 0.2

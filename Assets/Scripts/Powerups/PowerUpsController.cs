@@ -1,54 +1,36 @@
-using System.Collections.Generic;
+using Events;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gameplay.PowerUps
 {
     public class PowerUpsController : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer iconRenderer;
-        [SerializeField] private Player player;
-        
-        private List<PowerUpsBase> _activePowerUps;
+        private PickPowerUpEvent _pickUpEvent = new PickPowerUpEvent();
+        private ReleasePowerUpEvent _releasePowerUpEvent = new ReleasePowerUpEvent();
 
         public void CollectPowerUp(PowerUpsBase powerUp)
         {
-            // Check if the player already has the same power-up type
-            var existingPowerUp = _activePowerUps.Find(p => p.PowerUpType == powerUp.PowerUpType);
-
-            if (existingPowerUp != null)
-            {
-                // If the power-up is already active, reset its duration or refresh it
-                existingPowerUp.Deactivate(player);
-            }
-            else
-            {
-                // If the power-up is new, activate it
-                powerUp.Activate(player);
-                _activePowerUps.Add(powerUp);
-            }
+            _pickUpEvent?.Invoke(powerUp);
         }
         
         public void RemovePowerUp(PowerUpsBase powerUp)
         {
-            _activePowerUps.Remove(powerUp);
+            _releasePowerUpEvent?.Invoke(powerUp);
         }
         
-        public void Initialize(PowerUpsBase pu)
+        /// <summary>
+        /// Adds the given event handler as a listener
+        /// </summary>
+        /// <param name="handler">the event handler</param>
+        public void AddPickUpPowerUpEventListener(UnityAction<PowerUpsBase> handler)
         {
-            iconRenderer.sprite = pu.Icon;
-
-            if (pu is HealthPowerUp)
-            {
-                player.IncreaseHealth();
-            } else if (pu is SpeedPowerUp)
-            {
-                //player.SetPlayerSpeed();
-            }
+            _pickUpEvent.AddListener(handler);
         }
-
-        public void Hide()
+        
+        public void AddReleasePowerUpEventListener(UnityAction<PowerUpsBase> handler)
         {
-            iconRenderer.sprite = null;
+            _pickUpEvent.AddListener(handler);
         }
     }
 }

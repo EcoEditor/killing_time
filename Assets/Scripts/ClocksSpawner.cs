@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ public class ClocksSpawner : MonoBehaviour
 	[SerializeField] GameObject prefabPickup;
 	[SerializeField] private GameObject[] clockPrefabsRef;
 	[SerializeField] private string clockTag = "Clock";
+	[SerializeField] private LevelManager levelManager;
 
 	// spawn control
     private const float SPAWN_DELAY = 0.3f;
@@ -87,13 +89,22 @@ public class ClocksSpawner : MonoBehaviour
 		// only spawn a pickup if below max number
 		if (GameObject.FindGameObjectsWithTag(clockTag).Length < maxNumPerLevel)
         {
-			SpawnPickup();
+	        SpawnPickup();
 		}
 
         // don't start the timer if we've spawned all the pickups
         if (numPickupsSpawned < totalNumOfClocks)
         {
             _spawnTimer.Run();
+        }
+
+        if (numPickupsSpawned >= totalNumOfClocks)
+        {
+	        levelManager.LevelUp();
+	        numPickupsSpawned = 0;
+	        maxNumPerLevel++;
+	        totalNumOfClocks++;
+	        _spawnTimer.Run();
         }
 	}
 

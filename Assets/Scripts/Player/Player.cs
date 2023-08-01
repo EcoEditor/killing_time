@@ -31,6 +31,7 @@ namespace Gameplay
         [SerializeField] private AudioClip playerDeathAudio;
         [SerializeField] private AudioSource playerAudioSource;
         
+        private bool _hasArmor;
         private float _currentHealth;
         private float _healthPortion;
         private float _speed;
@@ -39,6 +40,7 @@ namespace Gameplay
         {
             _currentHealth = INITIAL_HEALTH;
             _healthPortion = _currentHealth / HEALTH_PORTIONS;
+            _speed = movementSpeed;
         }
 
         private void Update()
@@ -59,6 +61,7 @@ namespace Gameplay
 
         public void DecreaseHealth()
         {
+            if (_hasArmor) return;
             var currentHealth = _currentHealth - _healthPortion;
             if (currentHealth <= 0f)
             {
@@ -86,6 +89,16 @@ namespace Gameplay
         public void ResetSpeed()
         {
             _speed = movementSpeed;
+        }
+
+        public void RaiseArmor()
+        {
+            _hasArmor = true;
+        }
+
+        public void LowerArmor()
+        {
+            _hasArmor = false;
         }
 
         // What happens to the player when it been hit by the Follower clock

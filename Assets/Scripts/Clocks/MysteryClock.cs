@@ -20,33 +20,6 @@ namespace Gameplay.Clocks
             EventManager.AddListener(HandleGameLostEvent);
         }
         
-        private void Update()
-        {
-            var elapsedTime = Time.time - _startTime;
-                if (elapsedTime >= shootingInterval)
-            {
-                //ShootPlayer();
-                _startTime = Time.time;
-            }
-        }
-            
-        private void ShootPlayer()
-        {
-            // Generate a random angle in degrees.
-            var randomAngle = Random.Range(0f, 360f);
-
-            // Convert the angle to a vector in 2D space.
-            var randomDirection = new Vector2(Mathf.Cos(randomAngle * Mathf.Deg2Rad), Mathf.Sin(randomAngle * Mathf.Deg2Rad));
-            randomDirection.Normalize();
-
-            // Get the rotation of the power up based on the random direction:
-            var powerUpRotation = Quaternion.LookRotation(Vector3.forward, randomDirection);
-
-            var randomPowerUpIndex = Random.Range(0, powerUps.Length);
-            var powerUpPrefab = powerUps[0];
-            Instantiate(powerUpPrefab, transform.position, powerUpRotation);
-        }
-        
         private void HandleGameLostEvent(GameObject go)
         {
             // stop shooting player
@@ -56,7 +29,8 @@ namespace Gameplay.Clocks
         {
             var randomPowerUpIndex = Random.Range(0, powerUps.Length);
             var powerUpPrefab = powerUps[randomPowerUpIndex];
-            Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
+            var powerUp = Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
+            powerUp.StartExpireCountdown();
             base.Die();
         }
     }

@@ -1,31 +1,34 @@
-using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+// nice ref: https://www.kodeco.com/191-how-to-make-a-power-up-system-in-unity
 
 namespace Gameplay.PowerUps
 {
     public abstract class PowerUpsBase : MonoBehaviour
     {
         [SerializeField] private PowerUpType powerUpType;
-        [SerializeField] private int value;
         [SerializeField] private Sprite icon;
         [SerializeField] protected float duration;
+        [SerializeField] protected float expireTime;
         [SerializeField] protected AudioSource audioSfx;
 
         private Vector2 _moveDirection;
-        
-        private void Start()
-        {
-            // Calculate the move direction based on the projectile's initial rotation.
-            //_moveDirection = transform.right.normalized;
-        }
+        private float _startTime;
         
         private void Update()
         {
-            // Move the projectile in the direction of moveDirection.
-            //transform.position += (Vector3)_moveDirection * movementSpeed * Time.deltaTime;
+            var elapsedTime = Time.time - _startTime;
+            if (elapsedTime >= expireTime)
+            {
+                Destroy(gameObject);
+            }
         }
-        
+
+        public void StartExpireCountdown()
+        {
+            _startTime = Time.time;
+        }
+
         /// <summary>
         /// Processes trigger collisions with other game objects
         /// </summary>
@@ -34,9 +37,14 @@ namespace Gameplay.PowerUps
         {
             if (other.gameObject.CompareTag("Player"))
             {
+                var player = other.gameObject.GetComponent<Player>();
+                if (player == null) return;
+
                 var puc = other.gameObject.GetComponent<PowerUpsController>();
                 if (puc == null) return;
                 puc.CollectPowerUp(this);
+
+                Activate(player);
                 audioSfx.Play();
                 Destroy(gameObject);
 
@@ -47,20 +55,11 @@ namespace Gameplay.PowerUps
             }
         }
 
-        public virtual void Activate(Player player)
-        {
-            
-        }
+        protected abstract void Activate(Player player);
 
-        public virtual void Deactivate(Player player)
-        {
-            
-        }
-
-        public int Value => value;
-        public Sprite Icon => icon;
-        public float Duration => duration;
         public PowerUpType PowerUpType => powerUpType;
+        public float Duration => duration;
+        public Sprite Icon => icon;
     }
 
     public enum PowerUpType
