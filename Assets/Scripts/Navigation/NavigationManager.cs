@@ -7,11 +7,11 @@ namespace Infrastructure.Navigation
 	{
 		#region Consts
 
-		private const int MAIN_MENU_SCREEN_BUILD_ID = 1;
+		private const int MAIN_MENU_SCREEN_BUILD_ID = 0;
 
-		private const int GAME_SCREEN_BUILD_ID = 2;
+		private const int GAME_SCREEN_BUILD_ID = 1;
 		
-		private const int WIN_SCREEN_BUILD_ID = 3;
+		private const int WIN_SCREEN_BUILD_ID = 2;
 		
 		#endregion
 		

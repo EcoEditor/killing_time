@@ -9,7 +9,7 @@ namespace Infrastructure.Services
 {
 	public static class LoadingScreenServiceLocator
 	{
-		private const int LOADING_SCREEN_BUILD_ID = 0;
+		private const int LOADING_SCREEN_BUILD_ID = 3;
 		
 		private static ILoadingScreenService _service;
 		

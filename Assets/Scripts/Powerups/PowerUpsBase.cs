@@ -14,9 +14,11 @@ namespace Gameplay.PowerUps
 
         private Vector2 _moveDirection;
         private float _startTime;
+        private bool _didPickUp;
         
         private void Update()
         {
+            if (_didPickUp) return;
             var elapsedTime = Time.time - _startTime;
             if (elapsedTime >= expireTime)
             {
@@ -46,8 +48,8 @@ namespace Gameplay.PowerUps
 
                 Activate(player);
                 audioSfx.Play();
-                Destroy(gameObject);
-
+                transform.position = new Vector2(100f, 100f);
+                _didPickUp = true;
                 // if colliding with enemy return both to 
                 // their respective pools
                 //ObjectPool.ReturnEnemy(other.gameObject);

@@ -14,8 +14,10 @@ namespace Gameplay.PowerUps
         private IEnumerator Deactivate(Player player)
         {
             yield return new WaitForSeconds(duration);
-            player.GetComponent<PowerUpsController>().RemovePowerUp(this);
+            Debug.Log("Deactivate coroutine resumed after waiting");
             player.LowerArmor();
+            player.GetComponent<PowerUpsController>().RemovePowerUp(this);
+            Destroy(gameObject);
         }
     }
 }

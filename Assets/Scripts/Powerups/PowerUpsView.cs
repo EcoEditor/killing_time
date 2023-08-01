@@ -18,7 +18,7 @@ namespace Gameplay.PowerUps
         {
             if (powerUpsBase is InvincibilityPowerUp)
             {
-                StopAllCoroutines();
+                //StopAllCoroutines();
                 imageView.sprite = powerUpsBase.Icon;
             }
             
